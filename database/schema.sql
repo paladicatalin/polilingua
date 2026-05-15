@@ -1,8 +1,3 @@
--- PoliLingua Database Schema
--- Run this file to set up the database
-
-CREATE DATABASE IF NOT EXISTS polilingua CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE polilingua;
 
 -- Admins table
 CREATE TABLE IF NOT EXISTS admins (

@@ -1,0 +1,7 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(config|includes)(/|$) - [F,L]
+RewriteRule ^\.env$ - [F,L]
+<FilesMatch "\.(ini|env|phps)$">
+  Require all denied
+</FilesMatch>

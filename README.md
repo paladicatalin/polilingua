@@ -49,7 +49,31 @@ chmod 644 config/config.php
 mkdir -p uploads/cv
 chmod 755 uploads/cv
 ```
+## 6. Protecție fișiere sensibile
+Adaugă un fișier `.htaccess` în root cu:
+```apache
+Options -Indexes
+RewriteEngine On
+RewriteRule ^(config|includes)(/|$) - [F,L]
+RewriteRule ^\.env$ - [F,L]
+```
 
+În `uploads/cv/` adaugă un `.htaccess` cu:
+```apache
+Options -Indexes
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+</IfModule>
+<FilesMatch "\.(php|phps|php[34567]?|phtml)$">
+  Require all denied
+</FilesMatch>
+```
+
+## 7. Deploy în producție
+- Setează `APP_ENV=production` și `APP_DEBUG=0`.
+- Asigură-te că `DB_USER`, `DB_PASS`, `DB_HOST`, `DB_NAME`, `SITE_URL` sunt corect setate.
+- Nu lăsa `admin123` ca parolă după prima autentificare.
+- Folosește o bază de date separată pentru producție.
 ## Credențiale admin implicite
 - URL: `https://yourdomain.com/admin/login.php`
 - Email: `admin@polilingua.md`

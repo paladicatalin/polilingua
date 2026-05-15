@@ -117,24 +117,38 @@ include __DIR__ . '/includes/header.php';
   }
 
   .page-careers .navbar-nav {
-    gap: 8px;
+    gap: 0px;
   }
 
   .page-careers .navbar-nav a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
     font-size: 0.94rem;
     font-weight: 700;
     color: #141e32;
-    padding: 5px 9px;
-    border-radius: 10px;
+    padding: 8px 16px;
+    border-radius: 0;
+    line-height: 1.2;
+    text-align: center;
   }
 
   .page-careers .navbar.scrolled .navbar-nav a {
     font-size: 0.88rem;
   }
 
-  .page-careers .navbar-nav a:hover {
-    color: var(--blue-mid);
-    background: transparent;
+  .page-careers .navbar-nav a:hover,
+  .page-careers .navbar-nav a:focus-visible,
+  .page-careers .navbar-nav a:active,
+  .page-careers .navbar-nav li:hover > a,
+  .page-careers .navbar-nav li:focus-within > a {
+    color: #ffffff !important;
+    width: 100% !important;
+    background: linear-gradient(135deg, #4F77A8 0%, #2D4E75 100%) !important;
+    box-shadow: 0 2px 8px rgba(79, 119, 168, 0.3) !important;
+    transform: translateX(2px) !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
   }
 
   .page-careers .lang-toggle {
@@ -365,14 +379,21 @@ include __DIR__ . '/includes/header.php';
     }
 
     .page-careers .navbar-nav {
-      gap: 4px;
+      gap: 0px;
     }
 
-    .page-careers .navbar-nav a,
-    .page-careers .navbar.scrolled .navbar-nav a {
-      padding: 10px 12px;
-      border-radius: 8px;
-      font-size: 0.92rem;
+    .page-careers .navbar-nav li {
+      margin: 0;
+      list-style: none;
+    }
+
+    .page-careers .navbar-nav a:hover,
+    .page-careers .navbar-nav a:focus-visible,
+    .page-careers .navbar-nav a:active {
+      color: #ffffff;
+      background: linear-gradient(135deg, #4F77A8 0%, #2D4E75 100%);
+      box-shadow: 0 2px 8px rgba(79, 119, 168, 0.3);
+      transform: translateX(2px);
     }
 
     .page-careers .lang-toggle,
@@ -743,26 +764,6 @@ include __DIR__ . '/includes/header.php';
 </section>
 
 <!-- ══════════════════════════════════════════════════════ -->
-<!-- GALERIE ANGAJAȚI -->
-<!-- ══════════════════════════════════════════════════════ -->
-<section class="employees-gallery-section">
-  <div class="employees-gallery-head reveal">
-    <h2><?= t('employees_gallery_title') ?></h2>
-  </div>
-  <div class="employees-gallery-grid reveal">
-    <?php foreach ($employeeImages as $idx => $employeeImage): ?>
-      <figure class="employees-gallery-card">
-        <?php if ($employeeImage): ?>
-          <img src="<?= e($employeeImage) ?>" alt="Angajat <?= (int)$idx ?>" loading="lazy">
-        <?php else: ?>
-          <div class="employees-gallery-placeholder">Adaugă `assets/images/angajat<?= (int)$idx ?>.jpg`</div>
-        <?php endif; ?>
-      </figure>
-    <?php endforeach; ?>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════ -->
 <!-- APPLY FORM -->
 <!-- ══════════════════════════════════════════════════════ -->
 <section class="apply-section">
@@ -806,6 +807,26 @@ include __DIR__ . '/includes/header.php';
         <div class="form-error-msg" id="form-error"><?= t('form_error') ?></div>
       </form>
     </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<!-- GALERIE ANGAJAȚI -->
+<!-- ══════════════════════════════════════════════════════ -->
+<section class="employees-gallery-section">
+  <div class="employees-gallery-head reveal">
+    <h2><?= t('employees_gallery_title') ?></h2>
+  </div>
+  <div class="employees-gallery-grid reveal">
+    <?php foreach ($employeeImages as $idx => $employeeImage): ?>
+      <figure class="employees-gallery-card">
+        <?php if ($employeeImage): ?>
+          <img src="<?= e($employeeImage) ?>" alt="Angajat <?= (int)$idx ?>" loading="lazy">
+        <?php else: ?>
+          <div class="employees-gallery-placeholder">Adaugă `assets/images/angajat<?= (int)$idx ?>.jpg`</div>
+        <?php endif; ?>
+      </figure>
+    <?php endforeach; ?>
   </div>
 </section>
 

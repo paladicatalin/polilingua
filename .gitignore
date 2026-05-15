@@ -1,0 +1,4 @@
+/config/config.php
+/.env
+/uploads/cv/*
+!/uploads/cv/.gitkeep
